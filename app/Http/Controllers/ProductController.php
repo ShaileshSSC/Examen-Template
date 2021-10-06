@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $user = User::attempt($request->input('username'), $request->input('password'));
-
-        if(!$user) {
-            return back()->with('loginfailed', 'Onjuiste gegevens');
+        if(!$request->session()->has('id'))
+        {
+            $request->session()->put('id', '');
         }
-
-        $request->session()->put('user', $user);
-        $request->session()->put('id', $user->get('id'));
-        
-        // if($user->get('is_admin'))
-        // {
-        //     return redirect('admin');
-        // }
-        return redirect('products');
+        return view('products')->with(['products'=>Product::all()]);
     }
 
     /**
@@ -55,10 +45,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Product $product)
     {
         //
     }
@@ -66,10 +56,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Product $product)
     {
         //
     }
@@ -78,10 +68,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -89,14 +79,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Product $product)
     {
-        $request->session()->forget('user');
-        session()->forget('user');
-
-        return redirect('products')->with(['products'=> Product::all()]);
+        //
     }
 }

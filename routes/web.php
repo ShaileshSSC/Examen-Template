@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,12 @@ Route::view('/home', 'home')->name('home');
 
 Route::view('/login', 'login')->name('login');
 Route::view('/register', 'register')->name('register');
-Route::view('/products', 'products')->name('products');
+Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 Route::get('/logout', [UserController::class, 'destroy'])->name('logout');
 Route::post('/login', [UserController::class, 'index']);
+
+Route::resource('cart', CartController::class);
 
 
 // Route::group(['middleware' => 'userAuth'], function(){
