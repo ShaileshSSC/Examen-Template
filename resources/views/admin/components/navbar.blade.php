@@ -9,16 +9,12 @@
         <div class="-mx-1">
             <ul class="flex w-full flex-wrap items-center h-10">
             @if (Session::has('user'))
-                    <li class="block relative">
-                    <a onclick="save()" class="flex items-center h-10 leading-10 px-4 rounded-full cursor-pointer hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 mx-1">
-                        <span class=" text-xl"><i class="mdi mdi-cart-outline"></i></span>
-                        @if (session()->has('cart'))
-                        <span id="cartvalue" class="ml-3">{{ count(session()->get('cart')) }}</span>
-                        @else
-                        <span id="cartvalue" class="ml-3">0</span>
-                        @endif
-                    </a>
-                </li>
+            <li class="block relative">
+                <a href="{{url('products')}}" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 hover:bg-gray-100">
+                    <span class="mr-3 text-xl"> <i class="mdi mdi-package-variant-closed"></i> </span>
+                    <span>Webshop</span>
+                </a>
+            </li>
                 <li class="block relative" x-data="{showChildren:false}" @click.away="showChildren=false">
                     <a href="#" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 bg-indigo-500 text-white" @click.prevent="showChildren=!showChildren">
                         <span class="mr-3 text-xl"> <i class="mdi mdi-account"></i> </span>
@@ -41,14 +37,6 @@
                         </div>
                     </div>
                 </li>
-                @if (Session::get('user')->get('is_admin'))
-                <li class="block relative">
-                    <a href="{{url('admin/dashboard')}}" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 hover:bg-gray-100">
-                        <span class="mr-3 text-xl"> <i class="mdi mdi-view-dashboard"></i> </span>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                @endif
                 @else
                 <li class="block relative">
                     <a onclick="save()" class="flex items-center h-10 leading-10 px-4 rounded-full cursor-pointer no-underline hover:bg-gray-100 hover:no-underline transition-colors duration-100 mx-1">

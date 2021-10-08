@@ -15,6 +15,15 @@
      return true;
     }
     
+    function getUserId()
+    {
+        if(aUserIsLogged() != false)
+        {
+            return '{{session()->get("id")}}';
+        }
+        return '';
+    }
+    
     function mainCartExists()
     {
         if(sessionStorage.getItem('mainCart') == null)
@@ -26,16 +35,17 @@
     
     function setUserCartToMainCart()
     {
-        var userCart = JSON.parse(sessionStorage.getItem("userCart"));
+        var userCart = JSON.parse(sessionStorage.getItem("userCart" + getUserId()));
+        console.log(userCart);
         sessionStorage.setItem('mainCart', JSON.stringify(userCart));
-        sessionStorage.setItem('userCart', JSON.stringify(userCart));
+        sessionStorage.setItem('userCart' + getUserId(), JSON.stringify(userCart));
         // console.log( JSON.parse(sessionStorage.getItem("mainCart")));
     }
     
     function makeCarts()
     {
         sessionStorage.setItem('mainCart', JSON.stringify([]));
-        sessionStorage.setItem('userCart', JSON.stringify([]));
+        sessionStorage.setItem('userCart' + getUserId(), JSON.stringify([]));
         sessionStorage.setItem('guestCart', JSON.stringify([]));
     }
     
@@ -45,11 +55,19 @@
         sessionStorage.setItem('mainCart', JSON.stringify(guestCart));
         sessionStorage.setItem('guestCart', JSON.stringify(guestCart));
     }
+    function checkIfuserCartExists()
+    {
+        if(sessionStorage.getItem('userCart' + getUserId()) == null)
+        {
+            sessionStorage.setItem('userCart' + getUserId(), JSON.stringify([]));
+        } 
+    }
     
     
     //3 carts de mainCart de userCart en guestCart
        if(aUserIsLogged())
        {
+            checkIfuserCartExists();
             if(mainCartExists())
             {
                 setUserCartToMainCart();
@@ -92,17 +110,16 @@
         {
             if(aUserIsLogged())
             {
-                var userCart = JSON.parse(sessionStorage.getItem("userCart"));
+                var userCart = JSON.parse(sessionStorage.getItem("userCart" + getUserId()));
                 userCart.push(1);
-                sessionStorage.setItem('userCart', JSON.stringify(userCart));
+                console.log('User: ' + userCart);
+                sessionStorage.setItem('userCart' + getUserId(), JSON.stringify(userCart));
                 setUserCartToMainCart();
-                console.log('User: ' + sessionStorage.getItem("userCart"));
             } else {
                 var guestCart = JSON.parse(sessionStorage.getItem("guestCart"));
                 guestCart.push(1);
                 sessionStorage.setItem('guestCart', JSON.stringify(guestCart));
                 setGuestCartToMainCart();
-                console.log('Guest: ' + sessionStorage.getItem("guestCart"));
             }
             maincart = JSON.parse(sessionStorage.getItem('mainCart'));
             document.getElementById("cartvalue").innerText = maincart.length;
