@@ -18,6 +18,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+Route::group(['middleware' => 'verifyUser'], function(){
+
+
 Route::get('/', function () {
     return redirect('home');
 });
@@ -26,7 +29,7 @@ Route::view('/home', 'home')->name('home');
 
 Route::view('/login', 'login')->name('login');
 Route::view('/register', 'register')->name('register');
-Route::resource('products', ProductController::class);
+Route::get('products/all', [ProductController::class, 'all']);
 
 Route::get('/logout', [UserController::class, 'destroy'])->name('logout');
 Route::post('/login', [UserController::class, 'index']);
@@ -39,7 +42,14 @@ Route::resource('cart', CartController::class);
 // });
 
 Route::group(['middleware' => 'adminAuth'], function(){
-    Route::resource('admin/dashboard', DashboardController::class);
+    //admin
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    // Route::get('admin/products', [DashboardController::class, 'products']);
+    Route::get('admin/stores', [DashboardController::class, 'stores']);
+    //crud
+   Route::resource('admin/products', ProductController::class);
 });
 
 Route::view('/error', 'error/error')->name('error');
+
+});

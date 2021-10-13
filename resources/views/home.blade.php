@@ -7,7 +7,7 @@
         <span>Brood en lekkers</span>
       </p>
       <div class="flex flex-row items-center justify-center">
-        <a class="w-full" href="products"><button class="p-4 text-2xl bg-yellow-700 hover:bg-yellow-800 w-full text-white">Go</button></a>
+        <a class="w-full transform transition-all duration-200 scale-100 hover:scale-95" href="{{url('products/all')}}"><button class="p-4 text-2xl bg-yellow-700 hover:bg-yellow-800 w-full text-white">Go</button></a>
       </div>
     </div>
   </div>

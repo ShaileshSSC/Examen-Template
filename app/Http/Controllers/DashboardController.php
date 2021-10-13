@@ -5,26 +5,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Store;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function dashboard()
     {
-        return view('admin/dashboard', ['products'=>Product::all()]);
+        return view('admin/dash_home');
     }
 
-    public function show()
+    public function stores()
     {
-
+        return view('admin/dash_stores', ['stores'=>Store::all()]);
     }
 
-    public function destroy()
+    public function products()
     {
-
+        return view('admin/dash_products', ['products'=>Product::all()]);
     }
 
-    public function update()
-    {
-
-    }
 }

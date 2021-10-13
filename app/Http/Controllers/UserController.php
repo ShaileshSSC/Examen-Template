@@ -22,13 +22,12 @@ class UserController extends Controller
         }
 
         $request->session()->put('user', $user);
-        $request->session()->put('id', $user->get('id'));
         
         // if($user->get('is_admin'))
         // {
         //     return redirect('admin');
         // }
-        return redirect('products');
+        return redirect('products/all');
     }
 
     /**
@@ -97,6 +96,6 @@ class UserController extends Controller
         $request->session()->forget('user');
         session()->forget('user');
 
-        return redirect('products')->with(['products'=> Product::all()]);
+        return redirect('products/all')->with(['products'=> Product::all()]);
     }
 }

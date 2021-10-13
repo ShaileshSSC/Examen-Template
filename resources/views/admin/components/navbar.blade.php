@@ -1,14 +1,8 @@
-<style>
-@import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-.inset-l-full {
-    left: 100%;
-}
-</style>
 <div class="min-w-screen bg-gray-100 m-0">
     <div class="py-3 px-5 bg-white rounded shadow">
         <div class="-mx-1">
             <ul class="flex w-full flex-wrap items-center h-10">
-            @if (Session::has('user'))
+            @if (Session::get('user')->get('name') != 'guest')
             <li class="block relative">
                 <a href="{{url('products')}}" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 hover:bg-gray-100">
                     <span class="mr-3 text-xl"> <i class="mdi mdi-package-variant-closed"></i> </span>
@@ -49,12 +43,12 @@
                     </a>
                 </li>
                 <li class="block relative" x-data="{showChildren:false}" @click.away="showChildren=false">
-                    <a href="login" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline hover:bg-gray-50 mx-1 transition-colors duration-300 mx-1 bg-gray-100 text-gray">
+                    <a href="{{url('login')}}" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline hover:bg-gray-50 mx-1 transition-colors duration-300 mx-1 bg-gray-100 text-gray">
                         <span>Log in </span>                 
                     </a>
                 </li>
                                 <li class="block relative" x-data="{showChildren:false}" @click.away="showChildren=false">
-                    <a href="login" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline hover:bg-indigo-700 transition-colors duration-200 mx-1 bg-indigo-600 text-white">
+                    <a href="{{url('register')}}" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline hover:bg-indigo-700 transition-colors duration-200 mx-1 bg-indigo-600 text-white">
                         <span>Registreer </span>                 
                     </a>
                 </li>

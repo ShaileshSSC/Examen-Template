@@ -8,7 +8,7 @@
 
     function aUserIsLogged()
     {
-     if(!'{{session()->has("user")}}')
+        if('{{session()->get("user")->get("name")}}' == 'guest')
      {
         return false;
      }
@@ -19,7 +19,7 @@
     {
         if(aUserIsLogged() != false)
         {
-            return '{{session()->get("id")}}';
+            return '{{session()->get("user")->get("id")}}';
         }
         return '';
     }

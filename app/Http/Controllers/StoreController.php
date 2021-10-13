@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use GuzzleHttp\Middleware;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('admin/dash_products')->with(['products'=>Product::all()]);
-    }
-
-    public function all(Request $request)
-    {
-        return view('products')->with(['products'=>Product::all()]);
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Store $store)
     {
         //
     }
@@ -58,38 +52,34 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Store $store)
     {
-        return view('admin/dash_products_edit')->with(['product'=>$product]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Store $store)
     {
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->save();
-
-        return redirect('admin/products');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Store $store)
     {
-        Product::find($product)->destroy();
+        //
     }
 }
