@@ -51,4 +51,4 @@
           </nav>
         </header>
     
-        <section class="w-full h-full p-4 bg-gray-700 overflow-auto">
+        <section class="w-full h-full p-4 bg-gray-700 overflow-auto flex flex-col justify-between align-center">

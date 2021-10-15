@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/dash_products_create');
     }
 
     /**
@@ -41,7 +42,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->instock = ($request->instock == 'on' ? true : false);
+        $product->save();
+        return redirect('admin/products');
     }
 
     /**
@@ -90,6 +96,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        Product::find($product)->destroy();
+        Product::destroy($product->id);
+        return redirect()->back();
     }
 }
