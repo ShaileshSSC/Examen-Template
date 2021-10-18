@@ -11,17 +11,17 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('admin/dash_home');
+        return view('admin/layouts/home/home');
     }
 
     public function stores()
     {
-        return view('admin/dash_stores', ['stores'=>Store::all()]);
+        return view('admin/layouts/stores/all_stores', ['stores'=>Store::all()]);
     }
 
     public function products()
     {
-        return view('admin/dash_products', ['products'=>Product::all()]);
+        return view('admin/layouts/products/all_products', ['products'=>Product::all()]);
     }
 
 }

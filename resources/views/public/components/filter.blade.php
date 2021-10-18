@@ -1,11 +1,11 @@
-<div class="flex justify-between mx-1">
+<div class="flex justify-between pt-4 px-20 ">
                 <div>
                 <h3 class="text-gray-700 text-2xl font-medium">Wrist Watch</h3>
                 <span class="mt-3 text-sm text-gray-500">200+ Products</span>
                 </div>
                 <div class="flex items-center">
                 <li class="block relative" x-data="{showChildren:false}" @click.away="showChildren=false">
-                    <a href="#" class="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 hover:bg-gray-100" @click.prevent="showChildren=!showChildren">
+                    <a href="#" class="flex items-center h-10 bg-white leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline transition-colors duration-100 mx-1 hover:bg-gray-100" @click.prevent="showChildren=!showChildren">
                         <span class="mr-3 text-xl"><i class="mdi mdi-filter-outline"></i></span>
                         <span>Filter</span>
                     </a>

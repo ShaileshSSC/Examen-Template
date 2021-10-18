@@ -17,12 +17,12 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return view('admin/dash_products')->with(['products'=>Product::all()]);
+        return view('admin/layouts/products/all_products')->with(['products'=>Product::all()]);
     }
 
     public function all(Request $request)
     {
-        return view('products')->with(['products'=>Product::all()]);
+        return view('public/layouts/products/products')->with(['products'=>Product::all()]);
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin/dash_products_create');
+        return view('admin/layouts/products/create_products');
     }
 
     /**
@@ -70,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin/dash_products_edit')->with(['product'=>$product, 'stores'=> Store::all()]);
+        return view('admin/layouts/products/edit_products')->with(['product'=>$product, 'stores'=> Store::all()]);
     }
 
     /**

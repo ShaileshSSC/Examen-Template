@@ -10,8 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function stores()
+    public function store()
     {
-        return $this->belongsToMany(Store::class);
+        return $this->belongsTo(Store::class);
     }
 }

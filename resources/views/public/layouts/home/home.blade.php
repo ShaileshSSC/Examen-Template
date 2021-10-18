@@ -1,4 +1,4 @@
-@include('head/head')
+@include('public/components/head')
 <div>
   <div class="h-screen flex justify-left pl-40 items-center bg-cover bg-center" style="background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 65%)), url('https://images.unsplash.com/photo-1450862479751-84eeaf2fcca4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1174&q=80')">
     <div class="space-y-5">

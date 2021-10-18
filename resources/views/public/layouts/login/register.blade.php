@@ -1,4 +1,4 @@
-@include('head/head')
+@include('public/components/head')
 
 <body>
     <section class="min-h-screen flex items-stretch text-white ">

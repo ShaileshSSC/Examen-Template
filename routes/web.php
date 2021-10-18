@@ -25,10 +25,10 @@ Route::get('/', function () {
     return redirect('home');
 });
 
-Route::view('/home', 'home')->name('home');
+Route::view('/home', 'public/layouts/home/home')->name('home');
 
-Route::view('/login', 'login')->name('login');
-Route::view('/register', 'register')->name('register');
+Route::view('/login', 'public/layouts/login/login')->name('login');
+Route::view('/register', 'public/layouts/login/register')->name('register');
 Route::get('products/all', [ProductController::class, 'all']);
 
 Route::get('/logout', [UserController::class, 'destroy'])->name('logout');
@@ -50,6 +50,6 @@ Route::group(['middleware' => 'adminAuth'], function(){
    Route::resource('admin/products', ProductController::class);
 });
 
-Route::view('/error', 'error/error')->name('error');
+Route::view('/error', 'public/components/error')->name('error');
 
 });

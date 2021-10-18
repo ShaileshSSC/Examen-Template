@@ -1,1 +1,0 @@
-<h1>Welcome {{Session::get('user')->get('name')}}</h1>

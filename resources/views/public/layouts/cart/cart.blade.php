@@ -1,8 +1,8 @@
-@include('head/head')
+@include('public/components/head')
 
-@include('components/navbar')
+@include('public/components/navbar')
 
-@include('components/cart')
+@include('public/components/cart')
 
 <script type="text/javascript">
 

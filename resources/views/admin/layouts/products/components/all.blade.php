@@ -26,9 +26,7 @@
                     </div>
                         <div class="px-5 py-3 bg-white"> 
                         <h3 class="text-gray-700 uppercase">{{$product->name}}</h3>
-                        @foreach ($product->stores as $store)
-                        <span class="text-gray-500 mt-2">{{$store->name}}</span>
-                        @endforeach
+                        {{-- <span class="text-gray-500 mt-2">{{$product->store->name}}</span> --}}
                         <br>
                     <span class="text-gray-500 mt-2">${{$product->price}}</span>
                         </div>
