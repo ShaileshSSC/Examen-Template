@@ -10,6 +10,20 @@
                 </div>
                     <div class="px-5 py-3 bg-white flex flex-col justify-center"> 
                     <input type="text"style="-webkit-appearance: none; outline:none;" name="name" class="flex flex-grow"  value="{{$product->name}}">
+                    <div>
+                        <label for="store">Winkel:</label>
+                        <select name="store" id="store">
+                            @foreach ($product->stores as $product_store)
+                            @foreach ($stores as $store)
+                                @if ($product_store->name == $store->name)
+                                <option value="{{$store->id}}" selected>{{$store->name}}</option>
+                                @else
+                                <option value="{{$store->id}}">{{$store->name}}</option>
+                                @endif
+                            @endforeach
+                            @endforeach
+                        </select>
+                    </div>
                     <input type="number"  style="-webkit-appearance: none; outline:none;" name="price" class="flex flex-grow" value="{{$product->price}}">
                     </div>
             </div>           

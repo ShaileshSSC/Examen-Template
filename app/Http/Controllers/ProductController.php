@@ -6,6 +6,7 @@ use App\Models\Product;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Store;
 
 class ProductController extends Controller
 {
@@ -69,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin/dash_products_edit')->with(['product'=>$product]);
+        return view('admin/dash_products_edit')->with(['product'=>$product, 'stores'=> Store::all()]);
     }
 
     /**
@@ -83,6 +84,8 @@ class ProductController extends Controller
     {
         $product->name = $request->name;
         $product->price = $request->price;
+        $product->stores()->detach();
+        $product->stores()->attach($request->store);
         $product->save();
 
         return redirect('admin/products');
